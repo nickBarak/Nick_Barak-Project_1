@@ -1,4 +1,4 @@
-export const API = 'http://localhost:8080/p1-server';
+export const API = 'http://localhost:8080/server';
 
 export const routes = [
     '/',
