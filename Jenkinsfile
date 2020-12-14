@@ -7,8 +7,8 @@ pipeline {
       }
 
       steps {
-        sh 'rm -rf tomcat/webapps/client || true'
-        sh 'cp -r build tomcat/webapps/client'
+        sh 'rm -rf ~/tomcat/webapps/client || true'
+        sh 'cp -r build ~/tomcat/webapps/client'
       }
     }
   }
