@@ -9,6 +9,7 @@ import { routes } from './resources';
 import Home from './components/pages/Home';
 import ListSearch from './components/ListSearch';
 import LogIn from './components/pages/LogIn';
+import Admin from './components/pages/Admin';
 
 import Redirect from './components/pages/Redirect';
 
@@ -32,6 +33,10 @@ function App() {
               <Route key={'/signup'} path='/signup' exact component={() => <LogIn type={SIGNUP} />} />,
               <Route key={'/login'} path='/login' exact component={() => <LogIn type={LOGIN} />} />
             ]
+        }
+
+        {user && user.username === 'admin' &&
+          <Route key="/admin" path="/admin" component={Admin} />
         }
 
         {/* Whether logged in or not, ultimate */}

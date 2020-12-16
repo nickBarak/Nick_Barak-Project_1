@@ -12,11 +12,10 @@ const Home = (props: Props) => {
 
     return (
         <Layout>
-            <div className="PAGE-HOME">
-                <h3>Welcome to RRDex!</h3>
-                <br />
+            <div className="PAGE-HOME body">
+                <h1>Welcome to RRDex!</h1>
                 {user
-                    ? <div>What will you learn about pokemon today, {user.username}?</div>
+                    ? <div>What will you learn about pokemon today, <strong>{user.username}</strong>?</div>
                     : <div>Log in or sign up to view the site!</div>
                 }
             </div>

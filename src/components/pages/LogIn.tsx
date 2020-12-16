@@ -61,15 +61,15 @@ const LogIn = ({ type } : Props) => {
     return (
         <Layout>
             <div className="PAGE-LOGIN">
-                <div>Please enter a username and password to {type === SIGNUP ? 'sign up' : 'log in'}</div>
+                <h3>Please enter a username and password to {type === SIGNUP ? 'sign up' : 'log in'}</h3>
                 <div>{error}</div>
                 <form onSubmit={onSubmit}>
-                    <input type="text" name="username" placeholder="username" onChange={onChange} />
-                    <input type="password" name="password" placeholder="password" onChange={onChange} />
+                    <input className="input" type="text" name="username" placeholder="username" onChange={onChange} />
+                    <input className="input" type="password" name="password" placeholder="password" onChange={onChange} />
                     {type === SIGNUP && 
-                        <input type="password" name="confirmPassword" placeholder="confirm password" onChange={onChange} />
+                        <input className="input" type="password" name="confirmPassword" placeholder="confirm password" onChange={onChange} />
                     }
-                    <button>Submit</button>
+                    <button className="btn">Submit</button>
                 </form>
             </div>
         </Layout>

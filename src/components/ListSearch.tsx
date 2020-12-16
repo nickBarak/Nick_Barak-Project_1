@@ -55,22 +55,26 @@ const ListSearch = ({ type } : Props) => {
 
     return (
         <Layout>
-            <div className="PAGE-LISTSEARCH">
-                <form onSubmit={onSubmit}>
+            <div className="PAGE-LISTSEARCH body">
+                {type === POKEMON
+                    ? <h3 className="listSearchPrompt">Search for pokemon by name or type!</h3>
+                    :<h3 className="listSearchPrompt">Search for pokemon abilities by name!</h3>
+                }
+                <form onSubmit={onSubmit} className="listSearchForm">
                     {type === POKEMON &&
                         <>
                             <label><input type="radio" name="searchRadio" value="name" defaultChecked onChange={e => setSearchSetting(e.target.value)}/> Name </label>
                             <label><input type="radio" name="searchRadio" value="type" onChange={e => setSearchSetting(e.target.value)}/> Type </label>
                         </>
                     }
-                    <input type="text" name="searchValue" onChange={e => setSearchValue(e.target.value)} />
-                    <button>Submit</button>
-                    <button onClick={() => setSearchValue('')}>Show All</button>
+                    <input className="input" type="text" name="searchValue" onChange={e => setSearchValue(e.target.value)} />
+                    <button className="btn">Submit</button>
+                    <button className="btn" onClick={() => setSearchValue('')}>Show All</button>
                 </form>
                 {!list
-                    ? <div>No results found</div>
+                    ? <div style={{marginTop: '1.25rem'}}>No results found</div>
                     :
-                        <ol className="pokemon">
+                        <ol className="listSearchList">
                             {list.map(item => {
                                 switch (type) {
                                     case POKEMON:
