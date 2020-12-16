@@ -8,13 +8,13 @@ function Nav() {
 
     return (
         <nav>
-            <NavLink to='/' exact activeClassName="nav-selected">Home</NavLink>
+            <NavLink to='/client' exact activeClassName="nav-selected">Home</NavLink>
             {user && <>
-                <NavLink to='/pokemon' exact activeClassName="nav-selected">Pokemon</NavLink>
-                <NavLink to='/abilities' exact activeClassName="nav-selected">Abilities</NavLink>
+                <NavLink to='/client/pokemon' exact activeClassName="nav-selected">Pokemon</NavLink>
+                <NavLink to='/client/abilities' exact activeClassName="nav-selected">Abilities</NavLink>
             </>
             }
-            {user?.username === 'admin' && <NavLink to='/admin' exact activeClassName="nav-selected">Admin</NavLink>}
+            {user?.username === 'admin' && <NavLink to='/client/admin' exact activeClassName="nav-selected">Admin</NavLink>}
         </nav>
     )
 }

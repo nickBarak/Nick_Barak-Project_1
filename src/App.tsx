@@ -41,7 +41,7 @@ function App() {
 
         {/* Whether logged in or not, ultimate */}
         {routes.map(route => <Route key={route} path={route} exact component={Redirect} />)}
-        <Route path='/' render={() => <><div>404: Page Not Found</div> <button><Link to='/'>Back to Home</Link></button></>} />
+        <Route path='/' render={() => <><div>404: Page Not Found</div> <button><Link to='/client'>Back to Home</Link></button></>} />
       </Switch>
     </BrowserRouter>
   );

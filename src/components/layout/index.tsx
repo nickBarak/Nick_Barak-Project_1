@@ -31,8 +31,8 @@ const Layout = ({ children }: Props) => {
             {!user
                 ?
                 <span className="header-login">
-                    <button><Link to='/signup'>Sign up</Link></button>
-                    <button><Link to='/login'>Log in</Link></button>
+                    <button><Link to='/client/signup'>Sign up</Link></button>
+                    <button><Link to='/client/login'>Log in</Link></button>
                 </span>
                 : <button className="header-logout" onClick={logOut}>Log out</button>
             }

@@ -20,7 +20,7 @@ const Pokemon = ({ pokemon } : Props) => {
             <div>
                 <strong>Ability: </strong>
                 <span><Link to={{
-                    pathname: `/abilities`,
+                    pathname: `/client/abilities`,
                     state: { abilityName: pokemon.abilityObj.name }
                 }}>
                     {pokemon.abilityObj.name}
