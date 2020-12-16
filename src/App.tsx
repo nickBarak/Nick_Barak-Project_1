@@ -20,23 +20,24 @@ function App() {
     <BrowserRouter>
       <Switch>
         {/* Whether logged in or not, precedent */}
-        <Route path='/' exact component={Home} />
+        {/* <Route path='/' exact component={Home} /> */}
+        <Route path='/client' exact component={Home} />
 
         {user
           ? // If logged in
             [
-              <Route key={'/pokemon'} path='/pokemon' exact component={() => <ListSearch type={POKEMON} />} />,
-              <Route key={'/abilities'} path='/abilities' exact component={() => <ListSearch type={ABILITIES} />} />
+              <Route key={'/pokemon'} path='/client/pokemon' exact component={() => <ListSearch type={POKEMON} />} />,
+              <Route key={'/abilities'} path='/client/abilities' exact component={() => <ListSearch type={ABILITIES} />} />
             ]
           : // If not
             [
-              <Route key={'/signup'} path='/signup' exact component={() => <LogIn type={SIGNUP} />} />,
-              <Route key={'/login'} path='/login' exact component={() => <LogIn type={LOGIN} />} />
+              <Route key={'/signup'} path='/client/signup' exact component={() => <LogIn type={SIGNUP} />} />,
+              <Route key={'/login'} path='/client/login' exact component={() => <LogIn type={LOGIN} />} />
             ]
         }
 
         {user && user.username === 'admin' &&
-          <Route key="/admin" path="/admin" component={Admin} />
+          <Route key="/admin" path="/client/admin" component={Admin} />
         }
 
         {/* Whether logged in or not, ultimate */}
