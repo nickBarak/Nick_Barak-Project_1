@@ -34,7 +34,10 @@ const Admin = (props: Props) => {
                     description
                 })
         });
-        if (response.status === 200) setMessage('Edit performed successfully');
+        if (response.status === 200 || response.status === 201) {
+            setMessage('Edit performed successfully');
+        } else setMessage('Something went wrong');
+        
     }
 
     return (
@@ -52,7 +55,7 @@ const Admin = (props: Props) => {
                     </div>
                 </form>
                 {method === 'DELETE'
-                    ? <form>
+                    ? <form onSubmit={onSubmit}>
                         <input type="text" placeholder="name" className="input" onChange={e=> setName(e.target.value)} />
                         <button className="btn">Submit</button>
                     </form>

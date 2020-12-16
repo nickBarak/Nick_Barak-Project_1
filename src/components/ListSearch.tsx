@@ -1,4 +1,5 @@
-import React, { useState, useEffect, FormEvent } from 'react'
+import React, { useState, useEffect, useRef, FormEvent } from 'react';
+import { useLocation } from 'react-router-dom';
 import Layout from './layout';
 import API from '../resources';
 import { POKEMON, ABILITIES } from '../store/types';
@@ -9,6 +10,10 @@ import { Pokemon as PokemonType, Ability as AbilityType } from '../types';
 
 interface Props {
     type : typeof POKEMON | typeof ABILITIES;
+}
+
+interface LocationState {
+    abilityName : string;
 }
 
 function guardType(type : typeof POKEMON | typeof ABILITIES, object : PokemonType | AbilityType) : boolean {
@@ -27,35 +32,65 @@ function guardType(type : typeof POKEMON | typeof ABILITIES, object : PokemonTyp
 }
 
 const ListSearch = ({ type } : Props) => {
+    const { state } = useLocation<LocationState>();
     const [list, setList] = useState<[PokemonType | AbilityType]|null>(null);
-    const [searchValue, setSearchValue] = useState<string>('');
     const [searchSetting, setSearchSetting] = useState<string>('name');
-
-    useEffect(() => {
-        (async () => {
-            let response = await fetch(API + `/${type === POKEMON ? 'pokemon' : 'ability'}`);
-            let json = await response.json();
-            setList(json);
-        })();
-    }, [type]);
+    const [searchValue, setSearchValue] = useState<string>('');
+    const searchBar = useRef<HTMLInputElement|null>(null);
+    const [error, setError] = useState<string>('');
 
     const onSubmit = async (e : FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+        if (e) e.preventDefault();
         let response;
         if (!searchValue) {
             response = await fetch(API + `/${type === POKEMON ? 'pokemon' : 'ability'}`);
         } else response = await fetch(API + `/${type === POKEMON ? 'pokemon' : 'ability'}?${searchSetting}=${searchValue[0]?.toUpperCase() + searchValue.slice(1)}`);
+        if (!response.ok) {
+            setError('Error retrieving data');
+            return;
+        }
+        setError('');
         let json = await response.json();
         setList(json);
-        if (!searchValue) {
+        if (!searchValue && e) {
             let target = e.target as HTMLFormElement;
             target.reset();
         }
     }
 
+    useEffect(() => {
+        setTimeout(async () => {
+            if (state?.abilityName) {
+                setSearchValue(state.abilityName);
+                let response = await fetch(API + '/ability?name=' + state.abilityName);
+                if (!response.ok) {
+                    setError('Something went wrong');
+                    return;
+                }
+                setError('');
+                let json = await response.json();
+                setList(json);
+                if (searchBar?.current)
+                    searchBar.current.value = state.abilityName;
+            }
+        }, 10);
+    }, [state, searchBar]);
+
+    useEffect(() => {
+        (async () => {
+            if (state?.abilityName) return;
+            let response = await fetch(API + `/${type === POKEMON ? 'pokemon' : 'ability'}`);
+            let json = await response.json();
+            setList(json);
+        })();
+    }, [type, state]);
+
+    
+
     return (
         <Layout>
             <div className="PAGE-LISTSEARCH body">
+                <div>{error}</div>
                 {type === POKEMON
                     ? <h3 className="listSearchPrompt">Search for pokemon by name or type!</h3>
                     :<h3 className="listSearchPrompt">Search for pokemon abilities by name!</h3>
@@ -67,7 +102,7 @@ const ListSearch = ({ type } : Props) => {
                             <label><input type="radio" name="searchRadio" value="type" onChange={e => setSearchSetting(e.target.value)}/> Type </label>
                         </>
                     }
-                    <input className="input" type="text" name="searchValue" onChange={e => setSearchValue(e.target.value)} />
+                    <input className="input" type="text" name="searchValue" onChange={e => setSearchValue(e.target.value)} ref={searchBar} />
                     <button className="btn">Submit</button>
                     <button className="btn" onClick={() => setSearchValue('')}>Show All</button>
                 </form>

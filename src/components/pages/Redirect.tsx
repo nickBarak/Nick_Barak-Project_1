@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 
 const Redirect = ({ to = '/' }: Props) => {
     const history = useHistory();
-    history.push(to);
+    useEffect(() => history.push(to));
 
     return <></>
 }
