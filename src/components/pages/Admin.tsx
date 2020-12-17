@@ -43,7 +43,7 @@ const Admin = (props: Props) => {
     return (
         <Layout>
             <div className="PAGE-ADMIN">
-                <div>{message}</div>
+                <div style={{ color: message === 'Something went wrong' ? 'red' : 'green'}}>{message}</div>
                 <form>
                     <div className="types">
                         <label className="radio" ><input type="radio" name="type" defaultChecked value={POKEMON} onChange={e => setType(e.target.value)} /> Pokemon</label>

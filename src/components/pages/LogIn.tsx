@@ -62,7 +62,7 @@ const LogIn = ({ type } : Props) => {
         <Layout>
             <div className="PAGE-LOGIN">
                 <h3>Please enter a username and password to {type === SIGNUP ? 'sign up' : 'log in'}</h3>
-                <div>{error}</div>
+                <div style={{ color: 'red' }}>{error}</div>
                 <form onSubmit={onSubmit}>
                     <input className="input" type="text" name="username" placeholder="username" onChange={onChange} />
                     <input className="input" type="password" name="password" placeholder="password" onChange={onChange} />

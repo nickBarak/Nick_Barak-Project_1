@@ -90,7 +90,7 @@ const ListSearch = ({ type } : Props) => {
     return (
         <Layout>
             <div className="PAGE-LISTSEARCH body">
-                <div>{error}</div>
+                <div style={{ color: 'red' }}>{error}</div>
                 {type === POKEMON
                     ? <h3 className="listSearchPrompt">Search for pokemon by name or type!</h3>
                     :<h3 className="listSearchPrompt">Search for pokemon abilities by name!</h3>
