@@ -44,7 +44,7 @@ const LogIn = ({ type } : Props) => {
             case 200:
                 const user = { username: formData.username }
                 dispatch( updateUser(type, user) );
-                history.push('/');
+                history.push('/client');
                 return;
             case 422:
                 msg = 'Username not available';

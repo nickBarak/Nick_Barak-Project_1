@@ -5,7 +5,7 @@ interface Props {
     to : string;
 }
 
-const Redirect = ({ to = '/' }: Props) => {
+const Redirect = ({ to = '/client' }: Props) => {
     const history = useHistory();
     useEffect(() => history.push(to));
 

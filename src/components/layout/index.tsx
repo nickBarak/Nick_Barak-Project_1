@@ -22,7 +22,7 @@ const Layout = ({ children }: Props) => {
         let response = await fetch(API + '/logout');
         if (response.ok) {
             dispatch( updateUser(LOGOUT, null) );
-            history.push('/');
+            history.push('/client');
         }
     }
 
