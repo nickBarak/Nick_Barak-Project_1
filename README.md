@@ -1,46 +1,78 @@
-# Getting Started with Create React App
+# Radical Red Pokedex
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Product Description
+This application is the backend server for a portal that allows administrative users to
+manage a Pokemon database, and allows all users to access the said database. It displays
+Pokemon types, abilities, and potential differences with vanilla Pokemon.
 
-## Available Scripts
+# API Description
 
-In the project directory, you can run:
+## POST /login
+Define in the json body "username" and "password", currently no signup function so its
+predefined logins for admin and user.
 
-### `npm start`
+## GET /login
+Logs you out
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## GET /pokemon
+Gets all of the Pokemon in the DB, in json format.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+If parameter name is defined, it will return the specified Pokemon.
+If parameter type is defined, it will return all pokemon with the specified type.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## POST /pokemon - Only for user admin
+Creates a Pokemon and adds it to the db. Needs a json body, for example:
+```json
+{
+	"name": "Magmar",
+	"type1":"Fire",
+	"type2":"Fire",
+	"ability_name":"Flame Body"
+}
+```
+Posting a Pokemon that already exists in the database will result in updating that Pokemon.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## DELETE /pokemon - Only for user admin
+Deletes a Pokemon given the Pokemon name as part of the json body, for example:
+```json
+{
+	"name": "Magmar"
+}
+```
+## GET /ability
+Gets all of the abilities in the DB, in json format.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## POST /ability - Only for user admin
+Creates an ability and adds it to the db. Needs a json body, for example:
+```json
+{
+    "name":"Scrappy",
+    "description":"The Pok�mon can hit Ghost-type Pok�mon with Normal- and Fighting-type moves."
+}
+```
+Posting an ability that already exists in the db will result in updating that ability
 
-### `npm run eject`
+## DELETE /ability - Only for user admin
+Deletes an ability given the Pokemon name in the json body, for example:
+```json
+{
+	"name": "Scrappy"
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# POST /signup
+Signs up a user given the username and password in the json body, for example:
+```json
+{ "name":"poop2", "password":"1234"
+}
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# POST /login
+Logs in a user given the username and password as the PARAMETERS (not as json body because I'm stupid and decided to be inconsistent), for example:
+```
+Set key to: username, value to poop2
+Set another row key to: password, value to 1234
+```
