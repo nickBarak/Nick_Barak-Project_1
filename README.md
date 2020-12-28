@@ -1,9 +1,30 @@
 # Radical Red Pokedex
 
 # Product Description
-This application is the backend server for a portal that allows administrative users to
+This application is a portal that allows administrative users to
 manage a Pokemon database, and allows all users to access the said database. It displays
 Pokemon types, abilities, and potential differences with vanilla Pokemon.
+
+# UI Description
+
+# /
+Home page
+
+# /signup
+Register an account
+
+# /login
+Authenticate and establish a global user
+
+# /pokemon
+View all pokemon or those satisfying criteria name or type
+
+# /abilities
+View all abilities or search by name
+
+# /admin
+Manage pokemon and types in the database.
+
 
 # API Description
 
