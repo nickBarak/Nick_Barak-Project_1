@@ -5,24 +5,24 @@ This application is a portal that allows administrative users to
 manage a Pokemon database, and allows all users to access the said database. It displays
 Pokemon types, abilities, and potential differences with vanilla Pokemon.
 
-# UI Description
+# UI Route Descriptions
 
-# /
+## /
 Home page
 
-# /signup
+## /signup
 Register an account
 
-# /login
+## /login
 Authenticate and establish a global user
 
-# /pokemon
+## /pokemon
 View all pokemon or those satisfying criteria name or type
 
-# /abilities
+## /abilities
 View all abilities or search by name
 
-# /admin
+## /admin
 Manage pokemon and types in the database.
 
 
