@@ -37,7 +37,7 @@ You will need to ensure the following variables are set in your system environme
 
 ## Deployment
 When you are ready to deploy your application, make sure to execute the following command:
-        > mvn clean package
+        ```mvn clean package```
 
 You may need to delete your "/target" folder for the above command to execute properly.
 
