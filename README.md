@@ -24,6 +24,7 @@ You will need the following installed to run the application:
 - Maven
 - Apache Tomcat
 - PostgreSQL
+- Node.js
 
 You will need to ensure the following variables are set in your system environment.
 - JAVA_HOME
@@ -34,9 +35,12 @@ You will need to ensure the following variables are set in your system environme
 - DB_PASSWORD
 - DB_URL
 
+## Getting Started
+Clone the repository at "https://github.com/nickBarak/rrdex-ui" to acquire the front-end of the project.
+Clone the repository at "https://github.com/nickBarak/rrdex-api" to acquire the back-end of the project.
 
 ## Deployment
-When you are ready to deploy your application, make sure to execute the following command:
+When you are ready to deploy your server, make sure to execute the following command from the project directory of the API:
         ```mvn clean package```
 
 You may need to delete your "/target" folder for the above command to execute properly.
@@ -44,6 +48,9 @@ You may need to delete your "/target" folder for the above command to execute pr
 You must then locate the ".war" file in the "/target" folder and copy it to the "/webapps" folder of your Apache Tomcat directory.
 
 To start the server, navigate to the "/bin" sibling folder of the "/webapps" folder and execute the "startup" script.
+
+To launch the client, navigate to the front-end project directory and run
+	```npm start```
 
 You can view the application by navigating to the URL "http://localhost:3000". The API will be located at "http://localhost:8080/RRDex".
 
