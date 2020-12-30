@@ -45,7 +45,7 @@ You must then locate the ".war" file in the "/target" folder and copy it to the 
 
 To start the server, navigate to the "/bin" sibling folder of the "/webapps" folder and execute the "startup" script.
 
-You can view the application by navigating to the URL "http://localhost:8080/client". The API will be located at "http://localhost:8080/server".
+You can view the application by navigating to the URL "http://localhost:3000". The API will be located at "http://localhost:8080/RRDex".
 
 
 ## UI Route Descriptions
