@@ -36,7 +36,7 @@ You will need to ensure the following variables are set in your system environme
 - DB_URL
 
 ## Getting Started
-Clone the repository at "https://github.com/nickBarak/rrdex-ui" to acquire the front-end of the project.
+Clone the repository at "https://github.com/nickBarak/rrdex-ui" to acquire the front-end of the project.\n
 Clone the repository at "https://github.com/nickBarak/rrdex-api" to acquire the back-end of the project.
 
 ## Deployment
