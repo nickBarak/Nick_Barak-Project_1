@@ -72,18 +72,16 @@ Manage pokemon and types in the database.
 ## API Route Descriptions
 
 ### POST /login
-Define in the json body "username" and "password", currently no signup function so its
-predefined logins for admin and user.
+Logs in a user given a json body with attributes "username" and "password"
 
-### GET /login
-Logs you out
+### GET /logout
+Logs the user out
 
 ### GET /pokemon
-Gets all of the Pokemon in the DB, in json format.
+Gets all of the Pokemon in the database, in json format.
 
 If parameter name is defined, it will return the specified Pokemon.
 If parameter type is defined, it will return all pokemon with the specified type.
-
 
 ### POST /pokemon - Only for user admin
 Creates a Pokemon and adds it to the db. Needs a json body, for example:
@@ -97,29 +95,27 @@ Creates a Pokemon and adds it to the db. Needs a json body, for example:
 ```
 Posting a Pokemon that already exists in the database will result in updating that Pokemon.
 
-
 ### DELETE /pokemon - Only for user admin
 Deletes a Pokemon given the Pokemon name as part of the json body
 
 ### GET /ability
-Gets all of the abilities in the DB, in json format.
-
+Gets all of the abilities in the database, in json format.
 
 ### POST /ability - Only for user admin
-Creates an ability and adds it to the db. Needs a json body, for example:
+Creates an ability and adds it to the database. Needs a json body, for example:
 ```json
 {
     "name":"Scrappy",
     "description":"The Pokemon can hit Ghost-type Pokemon with Normal- and Fighting-type moves."
 }
 ```
-Posting an ability that already exists in the db will result in updating that ability
+Posting an ability that already exists in the database will result in updating that ability
 
 ### DELETE /ability - Only for user admin
-Deletes an ability given the Pokemon name in the json body
+Deletes an ability given the ability name in the json body
 
 ### POST /signup
 Signs up a user given the username and password in the json body
 
 ### POST /login
-Logs in a user given the username and password as the PARAMETERS (not as json body because I'm stupid and decided to be inconsistent)
+Logs in a user given the username and password in the json body
